@@ -1,0 +1,24 @@
+{
+  "name": "nobel_laureate_finder",
+  "version": "1.0.0",
+  "description": "This web-application is part of CS 4750 Fall 2021's project.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vinnypeng2000/Nobel_Laureate_Finder.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vinnypeng2000/Nobel_Laureate_Finder/issues"
+  },
+  "homepage": "https://github.com/vinnypeng2000/Nobel_Laureate_Finder#readme",
+  "dependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  }
+}
