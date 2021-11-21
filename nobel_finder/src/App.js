@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import clsx from "clsx";
 import useStyles from "./Components/UseStyles.js";
 import AppBar from "@material-ui/core/AppBar";
@@ -14,6 +13,9 @@ import mainListItems from "./Components/ListItems";
 // import Title from "./Title";
 import PageTitle from "./Components/PageTitle";
 import CssBaseline from "@material-ui/core/CssBaseline";
+import Container from "@material-ui/core/Container";
+import Grid from "@material-ui/core/Grid";
+import Paper from "@material-ui/core/Paper";
 
 export default function App() {
 
@@ -67,9 +69,45 @@ export default function App() {
             <List>{mainListItems}</List>
         </Drawer>
 
-        <main className={classes.content}>
-            <div><h1>Hi</h1><p>Hello World!</p></div>
-        </main>
+    <main className={classes.content}>
+      <div className={classes.appBarSpacer} />
+      <Container maxWidth="lg" className={classes.container}>
+        <Grid container spacing={3}>
+          <Grid item xs={12} md={8} lg={8}>
+            <Paper className={classes.paper}>
+              <center>
+                <h2>About This Tool</h2>
+              </center>
+            </Paper>
+          </Grid>
+
+          <Grid item xs={12} md={4} lg={4}>
+            <Paper className={classes.paper}>
+              <center>
+                <h2>Feature</h2>
+              </center>
+            </Paper>
+          </Grid>
+
+          <Grid item xs={12} md={4} lg={4}>
+            <Paper className={classes.paper}>
+              <center>
+                <h2>ADs</h2>
+              </center>
+            </Paper>
+          </Grid>
+
+          <Grid item xs={12} md={8} lg={8}>
+            <Paper className={classes.paper}>
+              <center>
+                <h2>About Us</h2>
+              </center>
+            </Paper>
+          </Grid>
+        </Grid>
+      </Container>
+    </main>
+
   </div>
   );
 }
