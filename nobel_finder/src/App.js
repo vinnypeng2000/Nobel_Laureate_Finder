@@ -70,17 +70,7 @@ export default function App() {
         <main className={classes.content}>
             <div><h1>Hi</h1><p>Hello World!</p></div>
         </main>
-
-      <nav
-      style={{
-        borderBottom: "solid 1px",
-        paddingBottom: "1rem"
-      }}
-      >
-      <Link to="/profile">Profile</Link> |{" "}
-      <Link to="/details">Details</Link>
-    </nav>
-
   </div>
   );
 }
+
