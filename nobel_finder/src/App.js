@@ -14,6 +14,9 @@ import mainListItems from "./Components/ListItems";
 // import Title from "./Title";
 import PageTitle from "./Components/PageTitle";
 import CssBaseline from "@material-ui/core/CssBaseline";
+import Login from './Components/Login';
+import Logout from './Components/Logout';
+
 
 export default function App() {
 
@@ -49,6 +52,9 @@ export default function App() {
             </IconButton>
             <PageTitle text="Home" />
         </Toolbar>
+        <div style={{display: 'flex', justifyContent: 'flex-end'}}>
+          <Login />
+        </div>
         </AppBar>
 
         <Drawer
@@ -66,21 +72,6 @@ export default function App() {
             <Divider />
             <List>{mainListItems}</List>
         </Drawer>
-
-        <main className={classes.content}>
-            <div><h1>Hi</h1><p>Hello World!</p></div>
-        </main>
-
-      <nav
-      style={{
-        borderBottom: "solid 1px",
-        paddingBottom: "1rem"
-      }}
-      >
-      <Link to="/profile">Profile</Link> |{" "}
-      <Link to="/details">Details</Link>
-    </nav>
-
   </div>
   );
 }
