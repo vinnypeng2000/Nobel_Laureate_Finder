@@ -12,10 +12,10 @@ function Login() {
   const navigate = useNavigate();
   const onSuccess = (res) => {
     console.log('Login Success: currentUser:', res.profileObj);
-    navigate('/details')
     alert(
       `Logged in successfully welcome ${res.profileObj.name}`
     );
+    navigate('/search');
     refreshTokenSetup(res);
   };
 
