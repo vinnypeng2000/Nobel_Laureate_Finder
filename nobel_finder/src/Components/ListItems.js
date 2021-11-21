@@ -27,58 +27,44 @@ export const mainListItems = (
     </Link>
     {/* This leads the user to the summary of the 2021 dataset */}
     <Link
-      to="/DataSummary"
+      to="/profile"
       style={{ textDecoration: "none", color: "#558aac" }}
     >
       <ListItem button>
-        <Tooltip title="Data Summary">
+        <Tooltip title="Profile">
         <ListItemIcon>
           <TimelineIcon />
         </ListItemIcon>
         </Tooltip>
-        <ListItemText primary="Data Summary" />
+        <ListItemText primary="Profile" />
       </ListItem>
     </Link>
     {/* This leads the user to a comparison of datasets between 2021 and 2019 as well as a Don't Quit Your Day Job salary Summary */}
     <Link
-      to="/DataComparisons"
+      to="/details"
       style={{ textDecoration: "none", color: "#558aac" }}
     >
       <ListItem button>
-        <Tooltip title="Data Comparison">
+        <Tooltip title="Details">
         <ListItemIcon>
           <CompareArrowsIcon />
         </ListItemIcon>
         </Tooltip>
-        <ListItemText primary="Comparing Datasets" />
+        <ListItemText primary="Details" />
       </ListItem>
     </Link>
     {/* This leads the user to filter and search salary location based on a number of filters/criteria */}
     <Link
-      to="/FilterAndSearch"
+      to="/search"
       style={{ textDecoration: "none", color: "#558aac" }}
     >
       <ListItem button>
-        <Tooltip title="Filter and Search">
+        <Tooltip title="Search">
         <ListItemIcon>
           <SearchIcon />
         </ListItemIcon>
         </Tooltip>
-        <ListItemText primary="Filter and Search" />
-      </ListItem>
-    </Link>
-    {/* This leads the user to a Google Form that they can fill our to add more information to the database */}
-    <Link
-      to="/AddResponse"
-      style={{ textDecoration: "none", color: "#558aac" }}
-    >
-      <ListItem button>
-        <Tooltip title="Add Response">
-        <ListItemIcon>
-          <AddIcon />
-        </ListItemIcon>
-        </Tooltip>
-        <ListItemText primary="Add a Response" />
+        <ListItemText primary="Search" />
       </ListItem>
     </Link>
   </div>
