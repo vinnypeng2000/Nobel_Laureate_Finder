@@ -7,6 +7,7 @@ import Home from "./Components/Home"
 import Results from "./Components/Results"
 import Profile from "./Components/Profile"
 import Details from "./Components/Details"
+import Search from "./Components/Search"
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import theme from "./theme";
 // import reportWebVitals from './reportWebVitals';
@@ -22,6 +23,7 @@ ReactDOM.render(
       <Route path="/" element={<App />} />
       <Route path="/profile" element={<Profile />} />
       <Route path="/details" element={<Details />} />
+      <Route path="/search" element={<Search />} />
     </Routes>
   </BrowserRouter>,
   document.getElementById("root")
@@ -30,4 +32,3 @@ ReactDOM.render(
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-// reportWebVitals();
