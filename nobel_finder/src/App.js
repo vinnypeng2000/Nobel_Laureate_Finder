@@ -16,6 +16,8 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
+import Login from './Components/Login';
+import Logout from './Components/Logout';
 
 const express = require('express');
 const app = express();
@@ -58,6 +60,9 @@ export default function App() {
             </IconButton>
             <PageTitle text="Home" />
         </Toolbar>
+        <div style={{display: 'flex', justifyContent: 'flex-end'}}>
+          <Login />
+        </div>
         </AppBar>
 
         <Drawer
@@ -120,4 +125,3 @@ export default function App() {
   </div>
   );
 }
-
