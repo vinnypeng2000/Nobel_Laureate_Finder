@@ -1,7 +1,6 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import clsx from "clsx";
-import useStyles from "./Components/UseStyles.js";
+import useStyles from "./UseStyles.js";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
@@ -10,14 +9,14 @@ import Drawer from "@material-ui/core/Drawer";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import Divider from "@material-ui/core/Divider";
 import List from "@material-ui/core/List";
-import mainListItems from "./Components/ListItems";
-// import Title from "./Title";
-import PageTitle from "./Components/PageTitle";
+import mainListItems from "./ListItems";
+import Title from "./Title";
+import PageTitle from "./PageTitle";
 import CssBaseline from "@material-ui/core/CssBaseline";
 
-export default function App() {
+export default function Home() {
 
-  const classes = useStyles();
+    const classes = useStyles();
     const [open, setOpen] = React.useState(true);
     const handleDrawerOpen = () => {
         setOpen(true);
@@ -26,8 +25,8 @@ export default function App() {
         setOpen(false);
     };
 
-  return (
-      <div className={classes.root}>
+    return (
+    <div className={classes.root}>
         <CssBaseline />
 
         <AppBar
@@ -70,17 +69,6 @@ export default function App() {
         <main className={classes.content}>
             <div><h1>Hi</h1><p>Hello World!</p></div>
         </main>
-
-      <nav
-      style={{
-        borderBottom: "solid 1px",
-        paddingBottom: "1rem"
-      }}
-      >
-      <Link to="/profile">Profile</Link> |{" "}
-      <Link to="/details">Details</Link>
-    </nav>
-
-  </div>
-  );
+    </div>
+    )
 }
