@@ -1,0 +1,156 @@
+{% load socialaccount %}
+{% load bootstrap5 %}
+{% load static %}
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
+
+  <title>UVA Off-Grounds Housing</title>
+
+  <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/starter-template/">
+
+  <!-- Bootstrap core CSS -->
+  <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="starter-template.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+
+  </head>
+    <!-- <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+      <a class="navbar-brand" href="#">Housing</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="logout">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/basicsite/about/">About</a>
+          </li>
+        </ul>
+      </div> -->
+      {% if user.is_authenticated %}
+        <body>
+        <!-- <li>Welcome, You are logged in as {{ user.username }}</li> -->
+        <!-- <p>
+          <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+            {{ user.username }}
+          </button>
+        </p>
+        <div class="collapse" id="collapseExample">
+          <button type="button" class="btn btn-primary btn-sm">Primary</button>
+        </div> -->
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+          <img src="https://gray-wvir-prod.cdn.arcpublishing.com/resizer/zS0MUjYm8Syl4nHNHxkjTJR4yK0=/1200x675/smart/filters:quality(85)/cloudfront-us-east-1.images.arcpublishing.com/gray/4DN5UPSSSZE3JCOIV72ZKSXDZM.png" width="60" alt="" class="d-inline-block align-middle mr-2">
+          <a class="navbar-brand" style="color:#E57200; font-size:25px">UVA Off-Grounds Housing</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item active">
+                <a class="nav-link" href="logout">Home <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/basicsite/maps/">Maps</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/basicsite/about/">About</a>
+              </li>
+            </ul>
+          </div>
+          <div class="nav-item dropdown">
+            <a class="btn btn-secondary btn-sm dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ user.username }}</a>
+            <div class="dropdown-menu" aria-labelledby="dropdown01">
+              <a class="dropdown-item" href="#">Account</a>
+              <a class="dropdown-item" href="logout">Logout</a>
+              <!-- <a class="dropdown-item" href="#">Something else here</a> -->
+            </div>
+          </div>
+            </nav>
+            <!-- <center> <div class="card" class="d-flex h-100" style="width: 18rem;">
+              <img class="card-img-top" src=".../100px180/" alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
+            </div></center> -->
+          <center><div class="jumbotron mt-2rem bg-transparent text-black" style="padding:250px">
+            <h1 class="display-4" style="color:#E57200;">Welcome to UVA Offground Housing</h1>
+            <a class="btn btn-primary btn-lg mt-5" href="/basicsite/" role="button">Starting Browsing</a>
+          </div></center>
+        </body>
+        <!-- <li><a href="/basicsite/">Browse Housing</a></li> -->
+        <!-- <div class="fixed-bottom">
+          <center><ul>
+        <form class="form-inline">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><a href="/basicsite/">Search</a></button>
+        </form>
+        </ul></center>
+        </div> -->
+      {% else %}
+      <body>
+      <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+        <img src="https://gray-wvir-prod.cdn.arcpublishing.com/resizer/zS0MUjYm8Syl4nHNHxkjTJR4yK0=/1200x675/smart/filters:quality(85)/cloudfront-us-east-1.images.arcpublishing.com/gray/4DN5UPSSSZE3JCOIV72ZKSXDZM.png" width="60" alt="" class="d-inline-block align-middle mr-2">
+
+        <a class="navbar-brand" style="color:#E57200; font-size:25px">Housing</a>
+        <!-- <img style="max-width:30px; margin-top: -7px;" style="background-color:blue;" src="/static/images/uva-logo.png"> -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="logout">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/basicsite/maps/">Maps</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/basicsite/about/">About</a>
+            </li>
+          </ul>
+        </div>
+        <div class="row">
+          <div class="col-md-3">
+            <a class="btn btn-outline-dark" href="{% provider_login_url 'google' %}" role="button" style="text-transform:none">
+              <img width="20px" style="margin-bottom:3px; margin-right:5px" alt="Google sign-in" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png" />
+              Login with Google
+            </a>
+          </div>
+        </div>
+        </nav>
+        </body>
+      {% endif %}
+    <!-- </nav> -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+    <script src="../../assets/js/vendor/popper.min.js"></script>
+    <script src="../../dist/js/bootstrap.min.js"></script>
+    <div>
+      <footer class="fixed-bottom" >
+        <center><div style="font-size:20px;" style="color:black;" style="background-color: black">
+          © 2021 Copyright: CS 3240 Housing Project B-10, UVA
+        </div></center>
+      </footer>
+    </div>
+</html>
+<!-- Minified CSS and JS -->
+<link   rel="stylesheet"
+        href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous">
+</script>
