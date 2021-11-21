@@ -26,7 +26,6 @@ export default function App() {
         setOpen(false);
     };
 
-<<<<<<< HEAD
   return (
       <div className={classes.root}>
         <CssBaseline />
@@ -74,3 +73,4 @@ export default function App() {
   </div>
   );
 }
+
