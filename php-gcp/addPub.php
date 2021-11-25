@@ -1,15 +1,15 @@
 <?php
  include_once("./library.php"); // To connect to the database
- $con = new mysqli($SERVER, $USERNAME, $PASSWORD, $DATABASE);
+ $con = new mysqli($server, $username, $password, $dbname);
  // Check connection
  if (mysqli_connect_errno())
  {
  echo "Failed to connect to MySQL: " . mysqli_connect_error();
  }
  // Form the SQL query (an INSERT query)
- $sql="INSERT INTO Persons (FirstN, LastN, Age)
+ $sql="INSERT INTO individual_publication (id, publications)
  VALUES
- ('$_POST[firstname]','$_POST[lastname]','$_POST[age]')";
+ ('$_POST[id]','$_POST[publications]')";
 
  if (!mysqli_query($con,$sql))
  {
