@@ -16,7 +16,3 @@ switch (@parse_url($_SERVER['REQUEST_URI'])['path']) {
 ?>
 
 <?php echo "Hello World @^_^@"?>
-
-
-
-
