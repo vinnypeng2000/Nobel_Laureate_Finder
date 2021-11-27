@@ -62,7 +62,8 @@ if(isset($_GET["code"]))
 if(!isset($_SESSION['access_token']))
 {
  //Create a URL to obtain user authorization
- $login_button = '<a href="'.$google_client->createAuthUrl().'"><img src="sign-in-with-google.png" /></a>';
+ $login_button = '<a href="'.$google_client->createAuthUrl().'">
+ <img src="https://onymos.com/wp-content/uploads/2020/10/google-signin-button-1024x260.png" /></a>';
 }
 
 ?>
