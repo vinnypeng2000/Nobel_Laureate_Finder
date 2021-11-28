@@ -32,8 +32,8 @@
             </ul>
                 <?php
                 if($login_button == '') {
-                echo '<div style="padding-right: 0.1in">Welcome: '.$_SESSION['user_first_name'].'</div>';
-                echo '<a href="logout.php"><img src="./media/google-logout.png" height="40" /></a>';
+                    echo '<div style="padding-right: 0.1in">Welcome: '.$_SESSION['user_first_name'].'</div>';
+                    echo '<a href="logout.php"><img src="./media/google-logout.png" height="40" /></a>';
                 }
                 else {
                     echo $login_button;
