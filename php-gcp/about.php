@@ -5,7 +5,7 @@
         include('config.php');
         ?>
     </head>
-    
+
     <body>
 
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -32,8 +32,8 @@
             </ul>
                 <?php
                 if($login_button == '') {
-                echo '<div style="padding-right: 0.1in">Welcome: '.$_SESSION['user_first_name'].'</div>';
-                echo '<a href="logout.php"><img src="./media/google-logout.png" height="40" /></a>';
+                    echo '<div style="padding-right: 0.1in">Welcome: '.$_SESSION['user_first_name'].'</div>';
+                    echo '<a href="logout.php"><img src="./media/google-logout.png" height="40" /></a>';
                 }
                 else {
                     echo $login_button;
@@ -54,7 +54,9 @@
                     CS 4750: Database Systems in fall 2021. It is a final course project that 
                     integrates SQL with PHP, bootstrap, and Google Cloud Platform. The software allows 
                     users to search for specific nobel luareates, filter through them based on 
-                    parameters, add new publications, and post reviews for them. If you want to learn 
+                    parameters, add new publications, and post reviews for them. 
+                    
+                    If you want to learn 
                     more about us, please refer to our personal links below.
                 </p>
                 <a href="https://storage.googleapis.com/cs4750f21/syllabus.html" class="card-link">
