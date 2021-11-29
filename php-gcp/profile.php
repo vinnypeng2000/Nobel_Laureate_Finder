@@ -70,29 +70,94 @@
                     die("Connection failed: " . $con->connect_error);
                 }
                 $email = $_SESSION['user_email_address'];
-                $sql="SELECT id, name, time FROM user_comment NATURAL JOIN has NATURAL JOIN individual
+                $sql1="SELECT id, name, time, content FROM user_comment NATURAL JOIN has NATURAL JOIN individual
                 WHERE userEmail = '{$_SESSION['user_email_address']}'";
-                $result = $con->query($sql);
-                if ($result->num_rows > 0) {
+                $result1 = $con->query($sql1);
+                if ($result1->num_rows > 0) {
                     echo "<table class='table'>
-                            <center><caption style='caption-side:top; color:darkturquoise;'>
-                            Individual</caption></center>
+                            <caption style='caption-side:top; color:darkturquoise;'>
+                            Comments - Individual</caption>
                             <tr>
-                                <th scope='col'>Nobel ID</th>
-                                <th scope='col'>Name</th>
-                                <th scope='col'>Time</th>
-                                <th scope='col'>Action</th>
+                            <th scope='col' width='5%'>Nobel ID</th>
+                            <th scope='col' width='20%'>Name</th>
+                            <th scope='col' width='20%'>Time</th>
+                            <th scope='col' width='35%'>Content</th>
+                            <th scope='col' width='20%'>Action</th>
                             </tr>";
-                    while($row = $result->fetch_assoc()) {
+                    while($row = $result1->fetch_assoc()) {
                         echo "<tr><td>".$row["id"]."</td><td>".$row["name"]." "."</td><td>"
-                        .$row["time"]."</td><td>".
+                        .$row["time"]."</td><td>".$row["content"]."</td><td>".
                         "<button type='button' class='btn btn-success'>View</button>
-                        <button type='button' class='btn btn-danger'>Delete</button></tr>";
+                        <a href='profileAction.php?edEmail=".$_SESSION['user_email_address']
+                        ."&time=".$row['time']."' class='btn btn-warning'>Edit</a>
+                        <a href='profileAction.php?delEmail=".$_SESSION['user_email_address']
+                        ."&time=".$row['time']."' class='btn btn-danger'>
+                        Delete</a></td></tr>";
                     }
                     echo "</table>";
                 } else {
+                    echo "<p style='color:darkturquoise;'>
+                    Comments - Individual</p>";
                     echo "0 results";
                 }
+
+                $sql2="SELECT id, name, time, content FROM user_comment NATURAL JOIN has NATURAL JOIN
+                awarded_organization WHERE userEmail = '{$_SESSION['user_email_address']}'";
+                $result2 = $con->query($sql2);
+                if ($result2->num_rows > 0) {
+                    echo "<table class='table'>
+                            <caption style='caption-side:top; color:darkturquoise;'>
+                            Comments - Organization</caption>
+                            <tr>
+                            <th scope='col' width='5%'>Nobel ID</th>
+                            <th scope='col' width='20%'>Organization Name</th>
+                            <th scope='col' width='20%'>Time</th>
+                            <th scope='col' width='35%'>Content</th>
+                            <th scope='col' width='20%'>Action</th>
+                            </tr>";
+                    while($row = $result2->fetch_assoc()) {
+                        echo "<tr><td>".$row["id"]."</td><td>".$row["name"]." "."</td><td>"
+                        .$row["time"]."</td><td>".$row["content"]."</td><td>".
+                        "<button type='button' class='btn btn-success'>View</button>
+                        <a href='profileAction.php?edEmail=".$_SESSION['user_email_address']
+                        ."&time=".$row['time']."' class='btn btn-warning'>Edit</a>
+                        <a href='profileAction.php?delEmail=".$_SESSION['user_email_address']
+                        ."&time=".$row['time']."' class='btn btn-danger'>
+                        Delete</a></td></tr>";
+                    }
+                    echo "</table>";
+                } else {
+                    echo "<p style='color:darkturquoise;'>
+                    Comments - Organization</p>";
+                    echo "0 results";
+                }
+
+                // $sql3="SELECT id, name, publication FROM individual NATURAL JOIN individual_publication
+                // WHERE userEmail = '{$_SESSION['user_email_address']}'";
+                // $result3 = $con->query($sql3);
+                // if ($result3->num_rows > 0) {
+                //     echo "<table class='table'>
+                //             <caption style='caption-side:top; color:darkturquoise;'>
+                //             Added Publications</caption>
+                //             <tr>
+                //                 <th scope='col' width='10%'>Nobel ID</th>
+                //                 <th scope='col' width='40%'>Organization Name</th>
+                //                 <th scope='col' width='25%'>Time</th>
+                //                 <th scope='col' width='25%'>Action</th>
+                //             </tr>";
+                //     while($row = $result3->fetch_assoc()) {
+                //         echo "<tr><td>".$row["id"]."</td><td>".$row["organizationName"]." "."</td><td>"
+                //         .$row["time"]."</td><td>".
+                //         "<button type='button' class='btn btn-success'>View</button>
+                //         <button type='button' class='btn btn-danger'>Delete</button></tr>";
+                //     }
+                //     echo "</table>";
+                // } else {
+                //     echo "<p style='color:darkturquoise;'>
+                //     Added Publications</p>";
+                //     echo "0 results";
+                // }
+
                 $con->close();
             }
             else {
