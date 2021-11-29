@@ -50,13 +50,13 @@
             <div class="card">
                 <div class="card-body">
                 <h5 class="card-title">CS 4750 - Fall 2021</h5>
-                <p class="card-text">This web application is created by 4 undergraduate students for 
-                    CS 4750: Database Systems in fall 2021. It is a final course project that 
-                    integrates SQL with PHP, bootstrap, and Google Cloud Platform. The software allows 
-                    users to search for specific nobel luareates, filter through them based on 
-                    parameters, add new publications, and post reviews for them. 
-                    
-                    If you want to learn 
+                <p class="card-text">This web application is created by 4 undergraduate students for
+                    CS 4750: Database Systems in fall 2021. It is a final course project that
+                    integrates SQL with PHP, bootstrap, and Google Cloud Platform. The software allows
+                    users to search for specific nobel luareates, filter through them based on
+                    parameters, add new publications, and post reviews for them.
+
+                    If you want to learn
                     more about us, please refer to our personal links below.
                 </p>
                 <a href="https://storage.googleapis.com/cs4750f21/syllabus.html" class="card-link">
@@ -87,9 +87,9 @@
                 <div class="card-body">
                 <h5 class="card-title">Haowen Xu</h5>
                 <h6 class="card-subtitle mb-2 text-muted">Third-Year CS + Econ</h6>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="card-link">GitHub</a>
-                <a href="#" class="card-link">LinkedIn</a>
+                <p class="card-text">Hi, I am interested in software engineering, machine learning, and business analytics.</p>
+                <a href="https://github.com/503600265" class="card-link">GitHub</a>
+                <a href="https://www.linkedin.com/in/haowen-xu-8214211a1/" class="card-link">LinkedIn</a>
                 </div>
             </div>
         </div>
@@ -120,7 +120,7 @@
         <div style="position: fixed; bottom: 0%; width: 100%;">
             <footer class="text-center bg-light">
                 <div class="text-center p-2" style="font-size: 14; background-color: rgba(0, 0, 0, 0.05);">
-                    &copy 2021 Copyright: Student Project for CS 4750: Database Systems. 
+                    &copy 2021 Copyright: Student Project for CS 4750: Database Systems.
                 University of Virginia.
                 </div>
             </footer>
