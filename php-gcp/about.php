@@ -97,10 +97,10 @@
             <div class="card" style="width: 18rem; height: 13rem;">
                 <div class="card-body">
                 <h5 class="card-title">Tianyang Chen</h5>
-                <h6 class="card-subtitle mb-2 text-muted">Third-Year CS + ???</h6>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="card-link">GitHub</a>
-                <a href="#" class="card-link">LinkedIn</a>
+                <h6 class="card-subtitle mb-2 text-muted">Third-Year CS + Cognitive Science</h6>
+                <p class="card-text">Hello, I am interested in web development, HCI, and UX/UI. </p>
+                <a href="https://github.com/tinnieteal" class="card-link">GitHub</a>
+                <a href="https://www.linkedin.com/in/tina-tianyang-chen-3a22381b0/" class="card-link">LinkedIn</a>
                 </div>
             </div>
         </div>
