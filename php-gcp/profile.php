@@ -18,12 +18,6 @@
                     <a class="nav-link active" aria-current="page" href="./home.php">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="./search.php">Search</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="./filter.php">Filter</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" href="./about.php">About</a>
                 </li>
                 <li class="nav-item">
@@ -87,7 +81,7 @@
                     while($row = $result1->fetch_assoc()) {
                         echo "<tr><td>".$row["id"]."</td><td>".$row["name"]." "."</td><td>"
                         .$row["time"]."</td><td>".$row["content"]."</td><td>".
-                        "<button type='button' class='btn btn-success'>View</button>
+                        "<a href='detail.php?id=".$row['id']."' class='btn btn-success'>View</a>
                         <a href='profileAction.php?edEmail=".$_SESSION['user_email_address']
                         ."&time=".$row['time']."' class='btn btn-warning'>Edit</a>
                         <a href='profileAction.php?delEmail=".$_SESSION['user_email_address']
@@ -118,7 +112,7 @@
                     while($row = $result2->fetch_assoc()) {
                         echo "<tr><td>".$row["id"]."</td><td>".$row["name"]." "."</td><td>"
                         .$row["time"]."</td><td>".$row["content"]."</td><td>".
-                        "<button type='button' class='btn btn-success'>View</button>
+                        "<a href='detail.php?id=".$row['id']."' class='btn btn-success'>View</a>
                         <a href='profileAction.php?edEmail=".$_SESSION['user_email_address']
                         ."&time=".$row['time']."' class='btn btn-warning'>Edit</a>
                         <a href='profileAction.php?delEmail=".$_SESSION['user_email_address']
