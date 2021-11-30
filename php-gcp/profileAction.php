@@ -55,8 +55,11 @@
             $email = $_GET['delEmail'];
             $time = $_GET['time'];
             $sql = "DELETE FROM has WHERE userEmail='{$email}' AND time='{$time}'";
-            // $sql1 = "DELETE FROM user_comment WHERE userEmail='{$email}' AND time='{$time}'";
+            $sql1 = "DELETE FROM user_comment WHERE userEmail='{$email}' AND time='{$time}'";
             if (!mysqli_query($con,$sql)) {
+                die('Error: ' . mysqli_error($con));
+            }
+            if (!mysqli_query($con,$sql1)) {
                 die('Error: ' . mysqli_error($con));
             }
             echo "<center><h2>Successfully Deleted Comment</h2></center>";
@@ -74,9 +77,13 @@
               <input type='submit' value='Submit' class='btn btn-primary' />
             </form>";
             if (isset($_POST['newComment'])) {
-                $sql = "UPDATE user_comment SET content = '{$_POST['newComment']}' 
+                $sql = "UPDATE user_comment SET content = '{$_POST['newComment']}', time=NOW() 
                 WHERE userEmail='{$email}' AND time='{$time}'";
+                $sql1 = "UPDATE has SET time=NOW() WHERE userEmail='{$email}' AND time='{$time}'";
                 if (!mysqli_query($con,$sql)) {
+                    die('Error: ' . mysqli_error($con));
+                }
+                if (!mysqli_query($con,$sql1)) {
                     die('Error: ' . mysqli_error($con));
                 }
                 echo "<center><h2>Successfully Updated Comment</h2></center>";
