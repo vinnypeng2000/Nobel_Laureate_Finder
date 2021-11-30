@@ -251,10 +251,17 @@
 
 <html>
     <!-- <div id="userComment"></div> -->
-    <textarea class="xlarge col-md-6 offset-md-3" id="addComment" rows=5 placeholder="Write a comment"></textarea><br>
-    <div style="padding:10px">
-        <center><button type="button" id="submit" class='btn btn-info'> Comment </button></center>
-    </div>
+    <?php 
+    if($login_button != '') {
+        echo "<center><h3>You need to login to comment!</h3><center>";
+    }
+    else {
+        echo '<textarea class="xlarge col-md-6 offset-md-3" id="addComment" rows=5 placeholder="Write a comment"></textarea><br>
+        <div style="padding:10px">
+            <center><button type="button" id="submit" class="btn btn-info"> Comment </button></center>
+        </div>';
+    }
+    ?>
 
     <div style="position: relative; bottom: 0%; width: 100%;">
             <footer class="text-center bg-light">
