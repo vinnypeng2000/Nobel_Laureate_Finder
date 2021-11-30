@@ -45,6 +45,9 @@
             echo "Failed to connect to MySQL: " . mysqli_connect_error();
         }   
 
+        date_default_timezone_set('America/New_York');
+        $date = date('Y-m-d H:i:s', time());
+
         if (isset($_GET['delEmail'])) {
             $email = $_GET['delEmail'];
             $time = $_GET['time'];
@@ -58,6 +61,7 @@
             }
             echo "<center><h2>Successfully Deleted Comment</h2></center>";
             echo "<center><a href='./profile.php' class='btn btn-success'>Back To Profile</a></center>";
+            echo "<br>";
             mysqli_close($con);
         }
 
@@ -67,13 +71,16 @@
             echo "<center><h2>Edit Your Comment</h2></center>";
             echo "
             <form action='' method='post' style='padding: 0.2in'>
-              Comment: <input type='text' name='newComment' class='form-control' /> <br /> 
-              <input type='submit' value='Submit' class='btn btn-primary' />
+                <textarea class='xlarge col-md-6 offset-md-3' 
+                    name='newComment' rows=5 planceholder='fk'>
+                </textarea>
+                <br><br>
+              <center><input type='submit' value='Submit' class='btn btn-primary' /></center>
             </form>";
             if (isset($_POST['newComment'])) {
-                $sql = "UPDATE user_comment SET content = '{$_POST['newComment']}', time=NOW() 
+                $sql = "UPDATE user_comment SET content = '{$_POST['newComment']}', time='{$date}' 
                 WHERE userEmail='{$email}' AND time='{$time}'";
-                $sql1 = "UPDATE has SET time=NOW() WHERE userEmail='{$email}' AND time='{$time}'";
+                $sql1 = "UPDATE has SET time='{$date}' WHERE userEmail='{$email}' AND time='{$time}'";
                 if (!mysqli_query($con,$sql)) {
                     die('Error: ' . mysqli_error($con));
                 }
@@ -83,11 +90,13 @@
                 echo "<center><h2>Successfully Updated Comment</h2></center>";
                 echo "<center><a href='./profile.php' 
                 class='btn btn-success'>Back To Profile</a></center>";
+                echo "<br>";
+                mysqli_close($con);
             }
         }
 ?>
 
-        <div style="position: fixed; bottom: 0%; width: 100%;">
+        <div style="position: relative; bottom: 0%; width: 100%;">
             <footer class="text-center bg-light">
                 <div class="text-center p-2" style="font-size: 14; background-color: rgba(0, 0, 0, 0.05);">
                     &copy 2021 Copyright: Student Project for CS 4750: Database Systems. 
