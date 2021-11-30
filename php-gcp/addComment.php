@@ -50,11 +50,21 @@
 
     $sql="SELECT content, time FROM user_comment NATURAL JOIN has WHERE id = $id";
     $result=mysqli_query($con,$sql);
+    echo "<table class='table'>
+        <caption style='caption-side:top; color:darkturquoise;'>
+        Comments</caption>
+        <tr>
+            <th scope='col' width='20%'>Time</th>
+            <th scope='col' width='60%'>Content</th>
+            <th scope='col' width='20%'>User</th>
+        </tr>";
     while($row=mysqli_fetch_array($result,MYSQLI_ASSOC)){
         $c = $row["content"];
         $t = $row["time"];
-        echo "<div>$t: $c</div><br>";
+        echo "<tr><td>".$t."</td><td>".$c."</td><td>".$_SESSION['user_email_address'].
+        "</td></tr>";
     }
+    echo "</table>";
 
     $con->close();
     // mysqli_close($con);

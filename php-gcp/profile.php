@@ -155,11 +155,12 @@
                 $con->close();
             }
             else {
-                echo '<center><h1>You need to login first to see your profile!</h1></center>';
+                echo '<center><h1>You need to login first to see your profile!</h1></center><br><br>
+                <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>';
             }
         ?>
 
-        <div style="position: fixed; bottom: 0%; width: 100%;">
+        <div style="position: relative; bottom: 0%; width: 100%;">
             <footer class="text-center bg-light">
                 <div class="text-center p-2" style="font-size: 14; background-color: rgba(0, 0, 0, 0.05);">
                     &copy 2021 Copyright: Student Project for CS 4750: Database Systems. 

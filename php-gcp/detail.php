@@ -109,14 +109,15 @@
             $b = true;
         }
 
-        //get user comments
-        $sql="SELECT content, time FROM user_comment NATURAL JOIN has WHERE id = $id";
+        // get user comments
+        $sql="SELECT content, time, userEmail FROM user_comment NATURAL JOIN has WHERE id = $id";
         $result=mysqli_query($con,$sql);
         $comments = "";
         while($row=mysqli_fetch_array($result,MYSQLI_ASSOC)){
             $c = $row["content"];
             $t = $row["time"];
-            $comments = $comments . "<div>$t: $c</div><br>";
+            $email = $row["userEmail"];
+            $comments = $comments . "<tr><td>".$t."</td><td>".$c."</td><td>".$email."</td></tr>";
         }
                 
         // get other info
@@ -132,7 +133,7 @@
             $city = str_replace('"','',$row['city']);
             $name = str_replace('"','',$row['name']);
             echo "
-            <div class='col-md-6 offset-md-3' style='padding-top:80px'>
+            <div class='col-md-6 offset-md-3' style='padding-top:10px'>
                 <h4> $name </h4>
                 <div class='card mb-3'>
                
@@ -166,9 +167,17 @@
                     </div>
                 </div>
             </div>
-            <div id='userComment'>
-                $comments
-            </div>
+            
+                <table id = 'userComment' class='table'>
+                    <caption style='caption-side:top; color:darkturquoise;'>
+                    Comments</caption>
+                    <tr>
+                        <th scope='col' width='20%'>Time</th>
+                        <th scope='col' width='60%'>Content</th>
+                        <th scope='col' width='20%'>User</th>
+                    </tr>.$comments.
+                </table>
+            
             ";
             echo "<br>";
         }
@@ -181,7 +190,7 @@
         while($row=mysqli_fetch_array($result,MYSQLI_ASSOC)){
             $c = $row["content"];
             $t = $row["time"];
-            $comments = $comments . "<div>$t: $c</div><br>";
+            $comments = $comments."<div>$t: $c</div><br>";
         }
 
         $sql="SELECT  NL.id, AO.name, NL.motivation, NP.category, NP.year, W.prizeShare
@@ -242,6 +251,24 @@
 
 <html>
     <!-- <div id="userComment"></div> -->
-    <textarea class="xlarge col-md-6 offset-md-3" id="addComment" rows=5 placeholder="Write a comment"></textarea><br>
-    <button type="button" id="submit"> Button </button>
+    <?php 
+    if($login_button != '') {
+        echo "<center><h3>You need to login to comment!</h3><center>";
+    }
+    else {
+        echo '<textarea class="xlarge col-md-6 offset-md-3" id="addComment" rows=5 placeholder="Write a comment"></textarea><br>
+        <div style="padding:10px">
+            <center><button type="button" id="submit" class="btn btn-info"> Comment </button></center>
+        </div>';
+    }
+    ?>
+
+    <div style="position: relative; bottom: 0%; width: 100%;">
+            <footer class="text-center bg-light">
+                <div class="text-center p-2" style="font-size: 14; background-color: rgba(0, 0, 0, 0.05);">
+                    &copy 2021 Copyright: Student Project for CS 4750: Database Systems. 
+                University of Virginia.
+                </div>
+            </footer>
+    </div>
 </html>

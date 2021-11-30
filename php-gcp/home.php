@@ -121,5 +121,14 @@
             </div>
         </div>
         </div>
+
+        <div style="position: relative; bottom: 0%; width: 100%;">
+            <footer class="text-center bg-light">
+                <div class="text-center p-2" style="font-size: 14; background-color: rgba(0, 0, 0, 0.05);">
+                    &copy 2021 Copyright: Student Project for CS 4750: Database Systems. 
+                University of Virginia.
+                </div>
+            </footer>
+        </div>
     </body>
 </html>
