@@ -22,7 +22,8 @@
                     data: { id: id,
                             text: $("#addComment").val()},
                     success: function(data){
-                        $('#userComment').html(data);	
+                        $('#userComment').html(data);
+                        $("#addComment").val('');	
                     }
                 });
             });
@@ -129,45 +130,69 @@
         if (!$result){
         die('Error: ' . mysqli_error($con));
         }
+        $r = mysqli_num_rows($result);
+        $num = 1;
         while($row=mysqli_fetch_array($result,MYSQLI_ASSOC)){
             $city = str_replace('"','',$row['city']);
             $name = str_replace('"','',$row['name']);
+            if($num==1){
             echo "
-            <div class='col-md-6 offset-md-3' style='padding-top:10px'>
-                <h4> $name </h4>
-                <div class='card mb-3'>
-               
-                    <div class='row g-0'>
-                        <div class='col-md-6'>    
-                            <div class='card-body'>
-                                <p class='card-text'><b>ID:</b> $row[id]</p >
-                                <p class='card-text'><b>Year:</b> $row[year]</p >
-                                <p class='card-text'><b>Category:</b> $row[category]</p >
-                                <p class='card-text'><b>Organization:</b> $orgName</p >
+                <div class='col-md-6 offset-md-3' style='padding-top:10px'>
+                    <h4> $name </h4>
+                    <div class='card mb-3'>
+                        <div class='row g-0'>
+                            <div class='col-md-6 border-bottom'>    
+                                <div class='card-body mb-3'>
+                                    <p class='card-text'><b>ID:</b> $row[id]</p >
+                                    <p class='card-text'><b>Organization:</b> $orgName</p >
+                                </div>
                             </div>
-                        </div>
-                        <div class='col-md-6'>
-                            <div class='card-body'>
-                                <p class='card-text'><b>Prize Share:</b> $row[prizeShare]</p >
-                                <p class='card-text'><b>Born:</b> $row[birthDate]</p >
-                                <p class='card-text'><b>Died:</b> $deathDate</p >
-                                <p class='card-text'><b>Hometown:</b> $city, $row[country]</p >
+                            <div class='col-md-6 border-bottom'>
+                                <div class='card-body mb-3'>
+                                    <p class='card-text'><b>Born:</b> $row[birthDate]</p >
+                                    <p class='card-text'><b>Died:</b> $deathDate</p >
+                                </div>
                             </div>
-                        </div>
-                        <div class='col-md-12'>
-                            <div class='card-body'>
-                                <p class='card-text'> <b>Motivation: </b>$row[motivation] </p>
+            ";}
+            echo "
+                            <div class='col-md-6 border-bottom'>
+                                <div class='card-body mb-3'>
+                                    <p class='card-text'><b>Year:</b> $row[year]</p >
+                                    <p class='card-text'><b>Category:</b> $row[category]</p >
+                                </div>
                             </div>
-                        </div>
-                        <div class='col-md-12'>
-                            <div class='card-body'>
-                                <p class='card-text'> <b>Publications: </b>$pubs</p>
+                            <div class='col-md-6 border-bottom'>
+                                <div class='card-body mb-3'>
+                                    <p class='card-text'><b>Prize Share:</b> $row[prizeShare]</p >
+                                </div>
+                            </div>
+            ";
+            if($num==$r){
+            echo "
+                            <div class='col-md-12'>
+                                <div class='card-body mb-3'>
+                                    <p class='card-text'><b>Hometown:</b> $city, $row[country]</p >
+                                </div>
+                            </div>
+                            <div class='col-md-12'>
+                                <div class='card-body mb-3'>
+                                    <p class='card-text'> <b>Motivation: </b>$row[motivation] </p>
+                                </div>
+                            </div>
+                            <div class='col-md-12'>
+                                <div class='card-body mb-3'>
+                                    <p class='card-text'> <b>Publications: </b>$pubs</p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            
+                </div>            
+            ";}
+            $num++;
+        }
+        echo "<br>";
+        echo "
+            <div class='col-md-8 offset-md-2'>
                 <table id = 'userComment' class='table'>
                     <caption style='caption-side:top; color:darkturquoise;'>
                     Comments</caption>
@@ -175,22 +200,21 @@
                         <th scope='col' width='20%'>Time</th>
                         <th scope='col' width='60%'>Content</th>
                         <th scope='col' width='20%'>User</th>
-                    </tr>.$comments.
+                    </tr>$comments
                 </table>
-            
-            ";
-            echo "<br>";
-        }
+            </div><br><br>
+        ";
     }
     else{
         //get user comments
-        $sql="SELECT content, time FROM user_comment NATURAL JOIN has WHERE id = $id";
+        $sql="SELECT content, time, userEmail FROM user_comment NATURAL JOIN has WHERE id = $id";
         $result=mysqli_query($con,$sql);
         $comments = "";
         while($row=mysqli_fetch_array($result,MYSQLI_ASSOC)){
             $c = $row["content"];
             $t = $row["time"];
-            $comments = $comments."<div>$t: $c</div><br>";
+            $email = $row["userEmail"];
+            $comments = $comments . "<tr><td>".$t."</td><td>".$c."</td><td>".$email."</td></tr>";
         }
 
         $sql="SELECT  NL.id, AO.name, NL.motivation, NP.category, NP.year, W.prizeShare
@@ -201,41 +225,64 @@
         if (!$result){
         die('Error: ' . mysqli_error($con));
         }
+        $r = mysqli_num_rows($result);
+        $num = 1;
         while($row=mysqli_fetch_array($result,MYSQLI_ASSOC)){
         // echo "<tr><td>$row[id]</td><td>$row[motivation]</td><td>$row[numComment]</td></tr>";
             $name = str_replace('"','',$row['name']);
+            if($num==1){
             echo "
                 <div class='col-md-6 offset-md-3' style='padding-top:80px'>
                     <h4> $name </h4>
                     <div class='card mb-3'>
                 
                         <div class='row g-0'>
-                            <div class='col-md-6'>    
-                                <div class='card-body'>
+                            <div class='col-md-12 border-bottom'>    
+                                <div class='card-body mb-3'>
                                     <p class='card-text'><b>ID:</b> $row[id]</p >
-                                    <p class='card-text'><b>Prize Share:</b> $row[prizeShare]</p >
                                 </div>
                             </div>
-                            <div class='col-md-6'>
-                                <div class='card-body'>
+            ";}
+            echo "
+                            <div class='col-md-6 border-bottom'>
+                                <div class='card-body mb-3'>
                                     <p class='card-text'><b>Year:</b> $row[year]</p >
                                     <p class='card-text'><b>Category:</b> $row[category]</p >
                                 </div>
                             </div>
+                            <div class='col-md-6 border-bottom'>
+                                <div class='card-body mb-3'>
+                                    <p class='card-text'><b>Prize Share:</b> $row[prizeShare]</p >
+                                </div>
+                            </div>
+            ";
+            if($num==$r){
+            echo "
                             <div class='col-md-12'>
-                                <div class='card-body'>
+                                <div class='card-body mb-3'>
                                     <p class='card-text'> <b>Motivation: </b>$row[motivation] </p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div id='userComment'>
-                    $comments
-                </div>
-            ";
-            echo "<br>";
+            ";}
+            $num++;
         }
+        echo "<br>";
+        echo "
+            <div class='col-md-8 offset-md-2'>
+                <table id = 'userComment' class='table'>
+                    <caption style='caption-side:top; color:darkturquoise;'>
+                    Comments</caption>
+                    <tr>
+                        <th scope='col' width='20%'>Time</th>
+                        <th scope='col' width='60%'>Content</th>
+                        <th scope='col' width='20%'>User</th>
+                    </tr>$comments
+                </table>
+            </div><br><br>
+        ";
     }
 
     // echo $sql;

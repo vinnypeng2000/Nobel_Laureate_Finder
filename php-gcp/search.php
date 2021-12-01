@@ -65,6 +65,48 @@
             $sql=$sql . " AND name LIKE '%$_GET[text]%'";
     }
 
+    $s_year=$_GET["s_year"];
+    $e_year=$_GET["e_year"];
+    if($s_year!=""||$e_year!=""){
+        if(strpos($sql,"WHERE"))
+            $sql=$sql . " AND";
+        else
+            $sql=$sql . " WHERE";
+        
+        if($s_year==""){
+            $e_year=(int)$e_year;
+            $sql=$sql . " year<=$e_year";
+        }elseif($e_year==""){
+            $s_year=(int)$s_year;
+            $sql=$sql . " year>=$s_year";
+        }else{
+            $e_year=(int)$e_year;
+            $s_year=(int)$s_year;
+            $sql=$sql . " year>=$s_year AND year<=$e_year";
+        }
+    }
+
+    switch($_GET['sort']){
+        case 1:
+            $sql=$sql . " ORDER BY name ASC";
+            break;
+        case 2:
+            $sql=$sql . " ORDER BY name DESC";
+            break;
+        case 3:
+            $sql=$sql . "ORDER BY year ASC";
+            break;
+        case 4:
+            $sql=$sql . "ORDER BY year DESC";
+            break;
+        case 5:
+            $sql=$sql . "ORDER BY id ASC";
+            break;
+        case 6:
+            $sql=$sql . "ORDER BY id DESC";
+            break;
+    }
+
     // echo $sql;
 
     $result=mysqli_query($con,$sql);

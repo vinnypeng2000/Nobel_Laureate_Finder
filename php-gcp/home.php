@@ -3,6 +3,8 @@
         <script src="./js/js/jquery-1.6.2.min.js" type="text/javascript"></script> 
         <script src="./js/js/jquery-ui-1.8.16.custom.min.js" type="text/javascript"></script>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet">
+        <!-- <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" ></script> -->
+        <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.min.js" crossorigin="anonymous"></script> -->
         <script>
         $(document).ready(function() {
             $('#submit').click(function() {
@@ -18,13 +20,30 @@
                             physics: $("#physics").is(":checked"),
                             medicine: $("#medicine").is(":checked"),
                             economics: $("#economics").is(":checked"),
-                            text: $("#search").val()},
+                            text: $("#search").val(),
+                            sort: $("#sort").val(),
+                            s_year: $("#s_year").val(),
+                            e_year: $("#e_year").val()},
                     success: function(data){
                         $('#result').html(data);	
                     }
                 });
             });
             $('#submit').trigger('click');
+            $('#reset').click(function() {
+                $('#org').prop("checked", false);
+                $('#ind').prop("checked", false);
+                $('#male').prop("checked", false);
+                $('#female').prop("checked", false);
+                $('#peace').prop("checked", false);
+                $('#chemistry').prop("checked", false);
+                $('#literature').prop("checked", false);
+                $('#physics').prop("checked", false);
+                $('#medicine').prop("checked", false);
+                $('#economics').prop("checked", false);
+                $("#s_year").val("");
+                $("#e_year").val("");
+            })
 
             //logic for gender filter
             $('#gender').hide();
@@ -108,14 +127,38 @@
                         <input type="checkbox" name="economics" id="economics" value="Economics">Economics<br>   
                         <br>  
                     </div>
+                    <div id="year">
+                        <h6>Year: </h6>
+                        <input type="number" name="s_year" id="s_year" class="col-md-6" min=1901 max=2021><br>
+                        <div class="offset-md-3">|</div>
+                        <input type="number" name="e_year" id="e_year" class="col-md-6" min=1901 max=2021><br>
+                        <br>
+                    </div>
+                    <button type="button" id="reset" class="btn btn-secondary">Reset</button>
                 </div>
             </div>
 
             <div class="col-md-10">
                 <br>
                 <div style="padding-bottom:20px">
-                    <input class="xlarge col-md-7 offset-md-1" id="search" name="search" placeholder="Search By Nobel Laureate Or Organization" style="padding:6px; border-radius: 5px; border-color:#79787808">
-                    <button type="button" id="submit" class="btn btn-primary col-md-1 offset-md-1">Search</button>
+                    <div class="row">
+                    <div class="col-md-3 offset-md-1">
+                        <select class="form-select" aria-label="Default select example" id="sort">
+                            <option selected value="1">Sort by Name: a-z</option>
+                            <option value="2">Sort by Name: z-a</option>
+                            <option value="3">Sort by Year: past-present</option>
+                            <option value="4">Sort by Year: present-past</option>
+                            <option value="5">Sort by ID: small-large</option>
+                            <option value="6">Sort by ID: large-small</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                    <input class="xlarge col-md-12" id="search" name="search" placeholder="Search By Nobel Laureate Or Organization" style="padding:6px; border-radius: 5px; border-color:#79787808">
+                    </div>
+                    <div class="col-md-1">
+                    <button type="button" id="submit" class="btn btn-primary">Search</button>
+                    </div>
+                    </div>
                 </div>
                 <div  id="result"></div>
             </div>
