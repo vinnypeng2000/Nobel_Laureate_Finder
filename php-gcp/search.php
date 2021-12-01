@@ -94,16 +94,16 @@
             $sql=$sql . " ORDER BY name DESC";
             break;
         case 3:
-            $sql=$sql . "ORDER BY year ASC";
+            $sql=$sql . " ORDER BY year ASC";
             break;
         case 4:
-            $sql=$sql . "ORDER BY year DESC";
+            $sql=$sql . " ORDER BY year DESC";
             break;
         case 5:
-            $sql=$sql . "ORDER BY id ASC";
+            $sql=$sql . " ORDER BY id ASC";
             break;
         case 6:
-            $sql=$sql . "ORDER BY id DESC";
+            $sql=$sql . " ORDER BY id DESC";
             break;
     }
 

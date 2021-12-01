@@ -1,7 +1,6 @@
 <?php
-    include('config.php');
+    include_once("./library.php"); // To connect to the database
 ?>
-
 <html>
 <body>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -19,6 +18,14 @@
             <li class="nav-item">
                 <a class="nav-link" href="./profile.php">Profile</a>
             </li>
+            <?php
+                if($username=="root")
+                echo "
+                    <li class='nav-item'>
+                        <a class='nav-link' href='./addPub.php'>Add Publication</a>
+                    </li>
+                ";
+            ?>
         </ul>
             <?php
             if($login_button == '') {
@@ -32,13 +39,24 @@
         </div>
         </div>
     </nav>
-
-    <h2>Add publications for nobel laureates!</h2>
-    <BR>
-    <form action="addPubSubmit.php" method="post">
-    Id: <input type="text" name="id">
-    Publication: <input type="text" name="publications">
-    <input type="Submit">
-    </form>
 </body>
 </html>
+<?php
+ $con = new mysqli($server, $username, $password, $dbname);
+ // Check connection
+ if (mysqli_connect_errno())
+ {
+ echo "Failed to connect to MySQL: " . mysqli_connect_error();
+ }
+ // Form the SQL query (an INSERT query)
+ $sql="INSERT INTO individual_publication (id, publications)
+ VALUES
+ ('$_POST[id]','$_POST[publications]')";
+
+ if (!mysqli_query($con,$sql))
+ {
+ die('Error: ' . mysqli_error($con));
+ }
+ echo "1 record added"; // Output to user
+ mysqli_close($con);
+?>

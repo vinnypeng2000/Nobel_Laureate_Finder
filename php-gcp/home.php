@@ -43,7 +43,14 @@
                 $('#economics').prop("checked", false);
                 $("#s_year").val("");
                 $("#e_year").val("");
-            })
+                $('#submit').trigger('click');
+            });
+            $('#sort').change(function() {
+                $('#submit').trigger('click');
+            });
+            $('#filter').change(function() {
+                $('#submit').trigger('click');
+            });
 
             //logic for gender filter
             $('#gender').hide();
@@ -135,7 +142,7 @@
                         <br>
                     </div>
                     <button type="button" id="reset" class="btn btn-secondary">Reset</button>
-                </div>
+                </div><br>
             </div>
 
             <div class="col-md-10">

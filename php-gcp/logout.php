@@ -8,6 +8,8 @@ include('config.php');
 //Reset OAuth access token
 $google_client->revokeToken();
 
+$_SESSION['loggedin'] = false;
+
 //Destroy entire session data.
 session_destroy();
 

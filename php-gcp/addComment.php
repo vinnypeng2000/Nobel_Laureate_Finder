@@ -1,5 +1,4 @@
 <?php
-    include('config.php');
     include_once("./library.php"); // To connect to the database
     $con = new mysqli($server, $username, $password, $dbname);
     // Check connection
@@ -66,6 +65,7 @@
     }
     echo "</table>";
 
+    mysqli_free_result($result);
     $con->close();
     // mysqli_close($con);
 

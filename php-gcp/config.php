@@ -48,6 +48,8 @@ if(isset($_GET["code"]))
   //Get user profile data from google
   $data = $google_service->userinfo->get();
 
+  $_SESSION['loggedin'] = true;
+
   //Below you can find Get profile data and store into $_SESSION variable
   if(!empty($data['given_name']))
   {

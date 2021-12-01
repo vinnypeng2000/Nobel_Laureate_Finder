@@ -2,7 +2,7 @@
     <head>
         <title>Nobel Luareate Finder</title>
         <?php
-        include('config.php');
+        include_once("./library.php"); // To connect to the database
         ?>
     </head>
 
@@ -38,7 +38,6 @@
         </nav>
 
         <?php
-        include_once("./library.php"); // To connect to the database
         $con = new mysqli($server, $username, $password, $dbname);
         // Check connection
         if (mysqli_connect_errno()) {
