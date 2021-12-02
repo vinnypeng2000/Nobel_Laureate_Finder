@@ -168,7 +168,9 @@
                         </select>
                     </div>
                     <div class="col-md-6">
-                    <input class="xlarge col-md-12" id="search" name="search" placeholder="Search By Nobel Laureate Or Organization" style="padding:6px; border-radius: 5px; border-color:#79787808">
+                    <input class="xlarge col-md-12" id="search" name="search" 
+                    placeholder="Search by Nobel Laureate Name or ID " 
+                    style="padding:6px; border-radius: 5px; border-color:#79787808">
                     </div>
                     <div class="col-md-1">
                     <button type="button" id="submit" class="btn btn-primary">Search</button>
