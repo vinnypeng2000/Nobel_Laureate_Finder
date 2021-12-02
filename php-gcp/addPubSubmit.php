@@ -2,11 +2,17 @@
     include_once("./library.php"); // To connect to the database
 ?>
 <html>
+    <head>
+        <title>Nobel Laureate Finder</title>
+        <?php
+        include('config.php');
+        ?>
+    </head>
 <body>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-            <a class="navbar-brand" href="./home.php" style="color:#9370DB">Nobel Luareate Finder</a>
+            <a class="navbar-brand" href="./home.php" style="color:#9370DB">Nobel Laureate Finder</a>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
@@ -39,8 +45,7 @@
         </div>
         </div>
     </nav>
-</body>
-</html>
+
 <?php
  $con = new mysqli($server, $username, $password, $dbname);
  // Check connection
@@ -57,6 +62,14 @@
  {
  die('Error: ' . mysqli_error($con));
  }
- echo "1 record added"; // Output to user
+ echo "<div style='padding-top: 0.1in;'><center>
+ <h3 style='color:darkturquoise;'>Added $_POST[publications] for nobel luareate $_POST[id]</h3></center></div>"; // Output to user
  mysqli_close($con);
 ?>
+
+<div style="padding:10px">
+    <center><a href="./profile.php" class="btn btn-info"> Back To Profile </a></center>
+</div>
+
+</body>
+</html>

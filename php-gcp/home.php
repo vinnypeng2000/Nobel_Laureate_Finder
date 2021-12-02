@@ -1,5 +1,8 @@
 <html>
     <head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+
+    <title>Nobel Laureate Finder</title>
+
         <script src="./js/js/jquery-1.6.2.min.js" type="text/javascript"></script> 
         <script src="./js/js/jquery-ui-1.8.16.custom.min.js" type="text/javascript"></script>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -77,7 +80,7 @@
     <body>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
-                <a class="navbar-brand" href="./home.php" style="color:#9370DB">Nobel Luareate Finder</a>
+                <a class="navbar-brand" href="./home.php" style="color:#9370DB">Nobel Laureate Finder</a>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
@@ -165,7 +168,9 @@
                         </select>
                     </div>
                     <div class="col-md-6">
-                    <input class="xlarge col-md-12" id="search" name="search" placeholder="Search By Nobel Laureate Or Organization" style="padding:6px; border-radius: 5px; border-color:#79787808">
+                    <input class="xlarge col-md-12" id="search" name="search" 
+                    placeholder="Search by Nobel Laureate Name or ID " 
+                    style="padding:6px; border-radius: 5px; border-color:#79787808">
                     </div>
                     <div class="col-md-1">
                     <button type="button" id="submit" class="btn btn-primary">Search</button>

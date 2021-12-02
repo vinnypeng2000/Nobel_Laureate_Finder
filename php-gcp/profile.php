@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>Nobel Luareate Finder</title>
+        <title>Nobel Laureate Finder</title>
         <?php
         include_once("./library.php"); // To connect to the database
         ?>
@@ -11,7 +11,7 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
-                <a class="navbar-brand" href="./home.php" style="color:#9370DB">Nobel Luareate Finder</a>
+                <a class="navbar-brand" href="./home.php" style="color:#9370DB">Nobel Laureate Finder</a>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
@@ -133,31 +133,7 @@
                     echo "0 results";
                 }
 
-                // $sql3="SELECT id, name, publication FROM individual NATURAL JOIN individual_publication
-                // WHERE userEmail = '{$_SESSION['user_email_address']}'";
-                // $result3 = $con->query($sql3);
-                // if ($result3->num_rows > 0) {
-                //     echo "<table class='table'>
-                //             <caption style='caption-side:top; color:darkturquoise;'>
-                //             Added Publications</caption>
-                //             <tr>
-                //                 <th scope='col' width='10%'>Nobel ID</th>
-                //                 <th scope='col' width='40%'>Organization Name</th>
-                //                 <th scope='col' width='25%'>Time</th>
-                //                 <th scope='col' width='25%'>Action</th>
-                //             </tr>";
-                //     while($row = $result3->fetch_assoc()) {
-                //         echo "<tr><td>".$row["id"]."</td><td>".$row["organizationName"]." "."</td><td>"
-                //         .$row["time"]."</td><td>".
-                //         "<button type='button' class='btn btn-success'>View</button>
-                //         <button type='button' class='btn btn-danger'>Delete</button></tr>";
-                //     }
-                //     echo "</table>";
-                // } else {
-                //     echo "<p style='color:darkturquoise;'>
-                //     Added Publications</p>";
-                //     echo "0 results";
-                // }
+                
                 mysqli_free_result($result1);
                 mysqli_free_result($result2);
                 $con->close();
