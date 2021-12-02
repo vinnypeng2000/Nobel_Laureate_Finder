@@ -27,6 +27,6 @@ if((isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == 'true')){
     $server = '34.85.200.4';       // projectID = cs4750, SQL instance ID = db-demo
     $dbname = 'nobel_laureate';
 }
-echo $username;
+// echo $username;
 // $dsn = "mysql:unix_socket=/cloudsql/:us-east4:;dbname=nobel_laureate";
 ?>
