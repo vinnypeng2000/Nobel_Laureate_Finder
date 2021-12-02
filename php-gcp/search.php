@@ -59,10 +59,19 @@
         $sql=$sql . " )";
         $sql=$sql . " AND name LIKE '%$_GET[text]%'";
     }else{
-        if(!(boo($_GET['ind']) xor boo($_GET['org'])))
-            $sql=$sql . " WHERE name LIKE '%$_GET[text]%'";
-        else
-            $sql=$sql . " AND name LIKE '%$_GET[text]%'";
+        if(!(boo($_GET['ind']) xor boo($_GET['org']))){
+            if(is_numeric($_GET['text'])){
+                $text = (int)$_GET['text'];
+                $sql=$sql . " WHERE id=$text";
+            }else
+                $sql=$sql . " WHERE name LIKE '%$_GET[text]%'";
+        }else{
+            if(is_numeric($_GET['text'])){
+                $text = (int)$_GET['text'];
+                $sql=$sql . " AND id=$text";
+            }else
+                $sql=$sql . " AND name LIKE '%$_GET[text]%'";
+        }
     }
 
     $s_year=$_GET["s_year"];

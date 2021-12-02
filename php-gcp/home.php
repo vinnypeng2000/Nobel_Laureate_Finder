@@ -63,6 +63,11 @@
                     $('#female').prop("checked", false);
                 }
             });
+
+            $("#search").keypress(function(e){
+                if(e.which == 13)
+                    $('#submit').trigger('click');
+            });
         });
         </script>
         <?php
