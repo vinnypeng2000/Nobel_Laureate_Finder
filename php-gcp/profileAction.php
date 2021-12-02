@@ -38,7 +38,11 @@
         </nav>
 
         <?php
-        $con = new mysqli($server, $username, $password, $dbname);
+        if( in_array($_SERVER['REMOTE_ADDR'], array( '127.0.0.1', '::1'))){
+            $con = new mysqli($server, $username, $password, $dbname);
+        }else{
+            $con = new mysqli(null, $username, $password, $dbname, null, '/cloudsql/nobel-laureate-finder-332817:us-east4:nobel-laureate-finder');
+        }
         // Check connection
         if (mysqli_connect_errno()) {
             echo "Failed to connect to MySQL: " . mysqli_connect_error();
