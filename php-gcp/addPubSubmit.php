@@ -1,11 +1,13 @@
 <?php
-    include('config.php');
+    include_once("./library.php"); // To connect to the database
 ?>
-
 <html>
     <head>
-    <title>Nobel Laureate Finder</title>
-    <head>
+        <title>Nobel Laureate Finder</title>
+        <?php
+        include('config.php');
+        ?>
+    </head>
 <body>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -22,6 +24,14 @@
             <li class="nav-item">
                 <a class="nav-link" href="./profile.php">Profile</a>
             </li>
+            <?php
+                if($username=="root")
+                echo "
+                    <li class='nav-item'>
+                        <a class='nav-link' href='./addPub.php'>Add Publication</a>
+                    </li>
+                ";
+            ?>
         </ul>
             <?php
             if($login_button == '') {
@@ -36,16 +46,30 @@
         </div>
     </nav>
 
-    <div style="padding-left: 0.1in; padding-top: 0.1in;">
-        <center><h3 style="color:darkturquoise;">Add Publications For Nobel Luareates!</h3></center>
-    </div>
-    <BR>
-    <div style="padding: 0.1in;">
-    <center><form action="addPubSubmit.php" method="post" style="width: 50%;">
-    Id: <input type="text" name="id"  class="form-control">
-    Publication: <input type="text" name="publications"  class="form-control"></center>
-    </div>
-    <center><input type="Submit" class='btn btn-info'></center>
-    </form>
+<?php
+ $con = new mysqli($server, $username, $password, $dbname);
+ // Check connection
+ if (mysqli_connect_errno())
+ {
+ echo "Failed to connect to MySQL: " . mysqli_connect_error();
+ }
+ // Form the SQL query (an INSERT query)
+ $sql="INSERT INTO individual_publication (id, publications)
+ VALUES
+ ('$_POST[id]','$_POST[publications]')";
+
+ if (!mysqli_query($con,$sql))
+ {
+ die('Error: ' . mysqli_error($con));
+ }
+ echo "<div style='padding-top: 0.1in;'><center>
+ <h3 style='color:darkturquoise;'>Added $_POST[publications] for nobel luareate $_POST[id]</h3></center></div>"; // Output to user
+ mysqli_close($con);
+?>
+
+<div style="padding:10px">
+    <center><a href="./profile.php" class="btn btn-info"> Back To Profile </a></center>
+</div>
+
 </body>
 </html>
