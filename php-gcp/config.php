@@ -3,10 +3,15 @@
 //config.php
 
 //Include Google Client Library for PHP autoload file
-require_once '../vendor/autoload.php';
+require_once './vendor/autoload.php';
+
+// use Google\Cloud\Firestore\FirestoreClient;
 
 //Make object of Google API Client for call Google API
 $google_client = new Google_Client();
+
+// $handler = new MySessionHandler();
+// session_set_save_handler($handler, true);
 
 //Set the OAuth 2.0 Client ID
 $google_client->setClientId('156338303218-448d8r066aqn85kg7vksvu6qfhss05h4.apps.googleusercontent.com');
@@ -15,12 +20,15 @@ $google_client->setClientId('156338303218-448d8r066aqn85kg7vksvu6qfhss05h4.apps.
 $google_client->setClientSecret('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');
 
 //Set the OAuth 2.0 Redirect URI
-$google_client->setRedirectUri('http://localhost/Nobel_Laureate_Finder/php-gcp/home.php');
+$google_client->setRedirectUri('http://nobel-laureate-finder-332817.uk.r.appspot.com/home.php');
+// $google_client->setRedirectUri('http://localhost/home.php');
 
 //
 $google_client->addScope('email');
 
 $google_client->addScope('profile');
+
+// $_SESSION['loggedin'] = true;
 
 //start session on web page
 session_start();
@@ -47,8 +55,6 @@ if(isset($_GET["code"]))
 
   //Get user profile data from google
   $data = $google_service->userinfo->get();
-
-  $_SESSION['loggedin'] = true;
 
   //Below you can find Get profile data and store into $_SESSION variable
   if(!empty($data['given_name']))

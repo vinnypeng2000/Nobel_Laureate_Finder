@@ -51,7 +51,7 @@
     //     die('Error: ' . mysqli_error($con));
     //     }
 
-    $sql="SELECT content, time FROM user_comment NATURAL JOIN has WHERE id = $id";
+    $sql="SELECT content, time, userEmail FROM user_comment NATURAL JOIN has WHERE id = $id";
     $result=mysqli_query($con,$sql);
     echo "<table class='table'>
         <caption style='caption-side:top; color:darkturquoise;'>
@@ -64,8 +64,8 @@
     while($row=mysqli_fetch_array($result,MYSQLI_ASSOC)){
         $c = $row["content"];
         $t = $row["time"];
-        echo "<tr><td>".$t."</td><td>".$c."</td><td>".$_SESSION['user_email_address'].
-        "</td></tr>";
+        $u = $row["userEmail"];
+        echo "<tr><td>".$t."</td><td>".$c."</td><td>".$u."</td></tr>";
     }
     echo "</table>";
 

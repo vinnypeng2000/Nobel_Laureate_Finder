@@ -1,9 +1,9 @@
+<?php
+    include_once('library.php');
+?>
 <html>
     <head>
         <title>Nobel Luareate Finder</title>
-        <?php
-        include_once("./library.php"); // To connect to the database
-        ?>
     </head>
 
     <body>

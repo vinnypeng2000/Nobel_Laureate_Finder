@@ -1,8 +1,14 @@
 <?php
-include('config.php');
-if((isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == 'true')){
+include_once('config.php');
+// if((isset($_SESSION['loggedin']) && $_SESSION['loggedin'])){
+if($login_button == ''){
     $email = $_SESSION['user_email_address'];
-    $con = new mysqli('34.85.200.4', 'root', 'database4750', 'nobel_laureate');
+    if( in_array($_SERVER['REMOTE_ADDR'], array( '127.0.0.1', '::1'))){
+        $con = new mysqli('34.85.200.4', 'root', 'database4750', 'nobel_laureate');
+    }else{
+        $con = new mysqli(null, 'root', 'database4750', 'nobel_laureate', null, '/cloudsql/nobel-laureate-finder-332817:us-east4:nobel-laureate-finder');
+    }
+    // $con = new mysqli('34.85.200.4', 'root', 'database4750', 'nobel_laureate');
     // Check connection
     if (mysqli_connect_errno()){
         echo "Failed to connect to MySQL: " . mysqli_connect_error();

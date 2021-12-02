@@ -1,9 +1,9 @@
+<?php
+    include_once('config.php');
+?>
 <html>
     <head>
         <title>Nobel Laureate Finder</title>
-        <?php
-        include('config.php');
-        ?>
     </head>
 
     <body>

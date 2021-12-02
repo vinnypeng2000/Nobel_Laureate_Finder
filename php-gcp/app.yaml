@@ -4,4 +4,40 @@ runtime: php73
 # Defaults to "serve index.php" 
 # entrypoint: serve helloworld.php
 
-# If your main page is index.php, comment the above entrypoint setting 
+# If your main page is index.php, comment the above entrypoint setting
+
+handlers:
+- url: /js
+  static_dir: js
+- url: /vendor
+  static_dir: vendor
+- url: /media
+  static_dir: media
+- url: /.*
+  script: auto
+# - url: /about.php
+#   script: /about.php
+# - url: /addComment.php
+#   script: /addComment.php
+# - url: /addPub.php
+#   script: /addPub.php
+# - url: /addPubSubmit.php
+#   script: /addPubSubmit.php
+# - url: /config.php
+#   script: /config.php
+# - url: /detail.php
+#   script: /detail.php
+# - url: /home.php
+#   script: /home.php
+# - url: /index.php
+#   script: /index.php
+# - url: /library.php
+#   script: /library.php
+# - url: /logout.php
+#   script: /logout.php
+# - url: /profile.php
+#   script: /profile.php
+# - url: /profileAction.php
+#   script: /profileAction.php
+# - url: /search.php
+#   script: /search.php

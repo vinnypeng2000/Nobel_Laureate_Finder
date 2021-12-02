@@ -1,9 +1,9 @@
+<?php
+    include_once('./library.php');
+?>
 <html>
     <head>
         <title>Nobel Laureate Finder</title>
-        <?php
-        include_once("./library.php"); // To connect to the database
-        ?>
     </head>
 
     <body>
@@ -24,12 +24,12 @@
                     <a class="nav-link" href="./profile.php">Profile</a>
                 </li>
                 <?php
-                if($username=="root")
+                if($username=="root"){
                 echo "
                     <li class='nav-item'>
                         <a class='nav-link' href='./addPub.php'>Add Publication</a>
                     </li>
-                ";
+                ";}
                 ?>
             </ul>
                 <?php
@@ -65,11 +65,11 @@
                         </div>
                     </div>';
                 
-                    if( in_array($_SERVER['REMOTE_ADDR'], array( '127.0.0.1', '::1'))){
-                        $con = new mysqli($server, $username, $password, $dbname);
-                    }else{
-                        $con = new mysqli(null, $username, $password, $dbname, null, '/cloudsql/nobel-laureate-finder-332817:us-east4:nobel-laureate-finder');
-                    }
+                if( in_array($_SERVER['REMOTE_ADDR'], array( '127.0.0.1', '::1'))){
+                    $con = new mysqli($server, $username, $password, $dbname);
+                }else{
+                    $con = new mysqli(null, $username, $password, $dbname, null, '/cloudsql/nobel-laureate-finder-332817:us-east4:nobel-laureate-finder');
+                }
                 // Check connection
                 if ($con->connect_error) {
                     die("Connection failed: " . $con->connect_error);

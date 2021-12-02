@@ -1,3 +1,6 @@
+<?php
+    include_once('config.php');
+?>
 <html>
     <head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
 
@@ -33,9 +36,6 @@
             // $('#submit').trigger('click');
         });
         </script>
-        <?php
-            include_once("./library.php"); // To connect to the database
-        ?>
     </head>
     <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -69,6 +69,7 @@
 </html>
 
 <?php
+    include_once('./library.php');
     if( in_array($_SERVER['REMOTE_ADDR'], array( '127.0.0.1', '::1'))){
         $con = new mysqli($server, $username, $password, $dbname);
     }else{

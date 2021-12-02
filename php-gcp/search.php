@@ -1,6 +1,8 @@
-<!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet"> -->
-
 <?php
+
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
     include_once("./library.php"); // To connect to the database
     if( in_array($_SERVER['REMOTE_ADDR'], array( '127.0.0.1', '::1'))){
         $con = new mysqli($server, $username, $password, $dbname);

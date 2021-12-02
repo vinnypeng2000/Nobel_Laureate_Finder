@@ -1,3 +1,9 @@
+<?php
+
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+    include_once('config.php');
+?>
 <html>
     <head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
 
@@ -73,9 +79,6 @@
             });
         });
         </script>
-        <?php
-            include('config.php');
-        ?>
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">

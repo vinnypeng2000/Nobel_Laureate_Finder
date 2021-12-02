@@ -4,9 +4,6 @@
 <html>
     <head>
         <title>Nobel Laureate Finder</title>
-        <?php
-        include('config.php');
-        ?>
     </head>
 <body>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet">
