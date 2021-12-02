@@ -145,7 +145,7 @@
                     <div id="year">
                         <h6>Year: </h6>
                         <input type="number" name="s_year" id="s_year" class="" min=1901 max=2021><br>
-                        <div class="offset-md-3">|</div>
+                        <div class="offset-md-4">|</div>
                         <input type="number" name="e_year" id="e_year" class="" min=1901 max=2021><br>
                         <br>
                     </div>
